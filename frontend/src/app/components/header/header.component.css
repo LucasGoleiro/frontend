@@ -1,8 +1,31 @@
 .div-main {
-    display: flex;
+  display: flex;
 
-    width: auto;
-    height: 70px;
+  width: auto;
+  height: 70px;
 
-    background-color: #BCD2EE;
+  background-color: #BCD2EE;
+}
+
+.div-content {
+  display: flex;
+
+  width: auto;
+  height: 70px;
+  align-content: center;
+  align-items: center;
+
+  margin-left: 450px;
+}
+
+img {
+  width: auto;
+  height: 70px;
+}
+
+h1 {
+  margin-left: 100px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 40px;
+  text-decoration: underline;
 }

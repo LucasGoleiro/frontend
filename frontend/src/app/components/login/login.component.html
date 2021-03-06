@@ -1,1 +1,28 @@
-<p>login works!</p>
+<div class="div-main">
+  <img src="../../../assets/todo.png" alt="to_do_image">
+
+  <div class="div-login">
+    <h3>Bem-vindo</h3>
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <div class="div-input">
+        <mat-form-field appearance="outline" color="primary">
+          <mat-label>Usuário</mat-label>
+          <input matInput type="text"
+          placeholder="Digite seu usuário aqui"
+          formControlName="username"
+          >
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" color="primary">
+          <mat-label>Senha</mat-label>
+          <input matInput type="password"
+          placeholder="Digite sua senha aqui"
+          formControlName="password"
+          >
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">Entrar</button>
+      </div>
+    </form>
+  </div>
+</div>
