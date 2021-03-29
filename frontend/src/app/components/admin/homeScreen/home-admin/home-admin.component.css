@@ -1,0 +1,19 @@
+.mat-tab-group {
+  margin-bottom: 48px;
+}
+
+div.div-main {
+  display: flex;
+  align-items: center;
+  align-self: center;
+  align-content: center;
+  justify-content: center;
+  width: 1000px;
+  background-color: #BCD2EE;
+  margin-top: 20px;
+  margin-left: 200px;
+} 
+
+div.div-main mat-tab-group {
+  width: 100%;
+}

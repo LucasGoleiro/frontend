@@ -1,6 +1,7 @@
 export interface UserDTO {
   name: string;
-  username: string;
+  email: string;
   password: string;
-  isManager: boolean;
+  position: string;
 }
+ 

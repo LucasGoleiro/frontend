@@ -1,6 +1,7 @@
 import { UserDTO } from './../../models/User';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,31 +13,38 @@ export class LoginComponent implements OnInit {
 
   public users: UserDTO[] = [
     {
-      name: "Lucas Coelho",
-      username: "Lucas",
-      password: "12345",
-      isManager: true
+      name: "admin",
+      email: "admin@email.com",
+      password: "123",
+      position: "admin"
     }
   ];
 
-  constructor(private fb:FormBuilder) { }
+  constructor(private fb:FormBuilder,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.createForm();
-  }
+  };
 
   public createForm(): void {
     this.userForm = this.fb.group({
-      username: new FormControl(''),
-      password: new FormControl(''),
-      // username: [{value: null, disable: false}, [Validators.required]],
-      // password: [{value: null, disable: false}, [Validators.required]]
+      name: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required])
     })
   };
 
   public onSubmit(): void {
+    const name: string = this.userForm.getRawValue().name
+    const password: string = this.userForm.getRawValue().password
 
-    console.log(this.userForm.getRawValue())
+    if(name === 'admin' && password === '123') {
+      this.router.navigate(['home-admin']);
+    } else if(name === 'lucas' && password === '123'){
+      this.router.navigate(['home-user']);
+    } else {
+      alert('usuário não encontrado !!!')
+    }
   };
 
 };

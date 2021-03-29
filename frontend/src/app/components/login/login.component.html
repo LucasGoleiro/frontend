@@ -5,15 +5,16 @@
     <h3>Bem-vindo</h3>
     <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
       <div class="div-input">
-        <mat-form-field appearance="outline" color="primary">
+        <mat-form-field appearance="outline" required>
           <mat-label>Usuário</mat-label>
           <input matInput type="text"
+          autocomplete="off"
           placeholder="Digite seu usuário aqui"
-          formControlName="username"
+          formControlName="name"
           >
         </mat-form-field>
 
-        <mat-form-field appearance="outline" color="primary">
+        <mat-form-field appearance="outline" required>
           <mat-label>Senha</mat-label>
           <input matInput type="password"
           placeholder="Digite sua senha aqui"
@@ -21,7 +22,7 @@
           >
         </mat-form-field>
 
-        <button mat-raised-button color="primary" type="submit">Entrar</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="userForm.invalid">Entrar</button>
       </div>
     </form>
   </div>
