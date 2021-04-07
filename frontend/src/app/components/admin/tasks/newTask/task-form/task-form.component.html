@@ -2,29 +2,19 @@
     <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="example-form">
       <section class="section-input">
         <mat-form-field class="example-full-width" appearance="outline" required>
-            <mat-label>Colaborador</mat-label>
-            <mat-select formControlName="develop">
-              <mat-option *ngFor="let developer of developers" [value]="developer">
-                {{developer}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-
-        <!-- <mat-form-field class="example-full-width" appearance="outline" required>
-          <mat-label>Descrição</mat-label>
-          <input matInput type="text"
-          placeholder="Digite aqui"
-          autocomplete="off"
-          formControlName="description"
-          >
-        </mat-form-field> -->
+          <mat-label>Colaborador</mat-label>
+          <mat-select formControlName="develop">
+            <mat-option *ngFor="let developer of developers" [value]="developer">
+              {{developer}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
 
         <mat-form-field class="example-full-width" appearance="outline" required>
           <mat-label>Descrição</mat-label>
           <textarea matInput placeholder="Digite aqui" formControlName="description" id="description" >
           </textarea>
         </mat-form-field>
-  
       </section>
   
       <div class="div-buttons">

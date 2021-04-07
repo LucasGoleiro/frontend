@@ -30,6 +30,7 @@ import { UserHomeComponent } from './components/user-home/user-home.component';
 import { UserActiveComponent } from './components/user-home/user-active/user-active.component';
 import { UserBacklogComponent } from './components/user-home/user-backlog/user-backlog.component';
 import { UserFinishedComponent } from './components/user-home/user-finished/user-finished.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { UserFinishedComponent } from './components/user-home/user-finished/user
     MatSortModule,
     MatDialogModule,
     MatSelectModule,
-    MatTooltipModule
+    MatTooltipModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

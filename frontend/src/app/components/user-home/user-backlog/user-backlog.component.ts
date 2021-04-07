@@ -11,9 +11,9 @@ import { TaskDTO } from 'src/app/models/Task';
 })
 export class UserBacklogComponent implements OnInit {
   public tasks: TaskDTO[] = [
-    {developer: 'Luis Alberto', creation: '2020-01-01', finished: '', description: 'Escrever documentação', status:'backlog'},
-    {developer: 'Ana Maria', creation: '2020-01-01', finished: '', description: 'Testar nova funcionalidade', status:'backlog'},
-    {developer: 'Raul Seixas', creation: '2020-01-01', finished: '', description: 'Revisar código', status:'backlog'}
+    {id: '10', developer: 'Luis Alberto', creation: '2020-01-01', finished: '', description: 'Escrever documentação', status:'backlog'},
+    {id: '11', developer: 'Ana Maria', creation: '2020-01-01', finished: '', description: 'Testar nova funcionalidade', status:'backlog'},
+    {id: '12', developer: 'Raul Seixas', creation: '2020-01-01', finished: '', description: 'Revisar código', status:'backlog'}
   ]
 
   displayedColumns: string[] = ['description', 'status'];

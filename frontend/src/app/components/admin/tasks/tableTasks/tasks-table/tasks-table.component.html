@@ -1,6 +1,6 @@
 <div class="div-main">
     <div class="div-header">
-      <button mat-button (click)="openDialog()" matTooltip="Criar novo membro do time">
+      <button mat-button (click)="openDialog()" matTooltip="Criar nova task">
         Novo
     </button>
     </div>
@@ -9,7 +9,7 @@
         <!-- Developer Column -->
         <ng-container matColumnDef="developer">
           <th mat-header-cell *matHeaderCellDef mat-sort-header matSortDirection="asc"> Colaborador </th>
-          <td mat-cell *matCellDef="let element"> {{element.developer}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.teamMember.name}} </td>
         </ng-container>
     
         <!-- Description Column -->

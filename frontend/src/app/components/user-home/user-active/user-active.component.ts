@@ -11,11 +11,11 @@ import { TaskDTO } from 'src/app/models/Task';
 })
 export class UserActiveComponent implements OnInit {
   public tasks: TaskDTO[] = [
-    {developer: 'Luis Alberto', creation: '2020-01-01', finished: '', description: 'Escrever documentação', status:'backlog'},
-    {developer: 'Ana Maria', creation: '2020-01-01', finished: '', description: 'Testar nova funcionalidade', status:'backlog'},
-    {developer: 'Raul Seixas', creation: '2020-01-01', finished: '', description: 'Revisar código', status:'backlog'},
-    {developer: 'Raul Seixas', creation: '2020-01-01', finished: '', description: 'Instalar banco de dados', status:'backlog'},
-    {developer: 'Raul Seixas', creation: '2020-01-01', finished: '', description: 'Atualizar anti-vírus', status:'backlog'}
+    {id: '13',  developer: 'Luis Alberto', creation: '2020-01-01', finished: '', description: 'Escrever documentação', status:'backlog'},
+    {id: '14', developer: 'Ana Maria', creation: '2020-01-01', finished: '', description: 'Testar nova funcionalidade', status:'backlog'},
+    {id: '15', developer: 'Raul Seixas', creation: '2020-01-01', finished: '', description: 'Revisar código', status:'backlog'},
+    {id: '16', developer: 'Raul Seixas', creation: '2020-01-01', finished: '', description: 'Instalar banco de dados', status:'backlog'},
+    {id: '17', developer: 'Raul Seixas', creation: '2020-01-01', finished: '', description: 'Atualizar anti-vírus', status:'backlog'}
   ]
 
   displayedColumns: string[] = ['description', 'status'];

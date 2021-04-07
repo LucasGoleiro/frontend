@@ -6,6 +6,7 @@ import {MatSort} from '@angular/material/sort';
 
 import { TaskDTO } from 'src/app/models/Task';
 import { MatDialog } from '@angular/material/dialog';
+import { TasksService } from 'src/app/components/services/task.service';
 
 @Component({
   selector: 'app-tasks-table',
@@ -13,27 +14,34 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./tasks-table.component.css']
 })
 export class TasksTableComponent implements OnInit {
-  public tasks: TaskDTO[] = [
-    {developer: 'Luis Alberto', creation: '2020-01-01', finished: '', description: 'tesgugukgugyuifyjfyjfyjfyjfyifyjfyfyfyjfyujfyuifyufyuifiyfyite', status:'backlog'},
-    {developer: 'Ana Maria', creation: '2020-01-01', finished: '', description: 'teste', status:'backlog'},
-    {developer: 'Raul Seixas', creation: '2020-01-01', finished: '', description: 'teste', status:'backlog'}
-  ]
+  // public tasks: TaskDTO[] = [
+  //   {id: '01', developer: 'Luis Alberto', creation: '2020-01-01', finished: '', description: 'Teste 1', status:'backlog'},
+  //   {id: '01', developer: 'Ana Maria', creation: '2020-01-01', finished: '', description: 'Teste 2', status:'backlog'},
+  //   {id: '01', developer: 'Raul Seixas', creation: '2020-01-01', finished: '', description: 'Teste 3', status:'backlog'}
+  // ]
 
+  public ELEMENT_DATA! : TaskDTO[];
   displayedColumns: string[] = ['developer', 'description', 'status'];
-  dataSource = new MatTableDataSource<TaskDTO>(this.tasks);
+  dataSource = new MatTableDataSource<TaskDTO>(this.ELEMENT_DATA);
 
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    public dialog: MatDialog,
+    private tasksService: TasksService
+    ) { }
 
   ngOnInit(): void {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort=this.sort;
+    this.listTasks();
   }
 
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
+  public listTasks(){
+    let resp = this.tasksService.listTasks();
+    resp.subscribe(report=>this.dataSource.data=report as TaskDTO[])
   }
 
   openDialog() {
