@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { UsersService } from 'src/app/components/services/users.service';
+import { UserDTO } from 'src/app/models/User';
 
 @Component({
   selector: 'app-userform',
@@ -8,6 +10,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 })
 export class UserformComponent implements OnInit {
   public userForm: FormGroup;
+  private _userDTO!: UserDTO;
 
   public positions: string[] = [
     'Desenvolvedor FullStack',
@@ -17,23 +20,29 @@ export class UserformComponent implements OnInit {
     'DBA',
   ]
 
-  constructor(private fb:FormBuilder) { }
+  constructor(
+    private _fb:FormBuilder,
+    private _userService: UsersService
+    ) { }
 
   ngOnInit(): void {
     this.createForm();
   };
 
   public createForm(): void {
-    this.userForm = this.fb.group({
-      name: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required]),
-      password: new FormControl('123'),
-      position: new FormControl('', [Validators.required])
+    this.userForm = this._fb.group({
+      name: [{ value: null, disabled: false }, [Validators.required]],
+      email: [{ value: null, disabled: false }, [Validators.required]],
+      password: [{ value: '123', disabled: false }, [Validators.required]],
+      position:[{ value: null, disabled: false }, [Validators.required]],
     })
   };
 
   public onSubmit(): void {
-    console.log(this.userForm.getRawValue())
+    this._userDTO = this.userForm.getRawValue();
+    this._userService.createUser(this._userDTO).subscribe(
+      user => this._userService.emitUser(user)
+    );
   };
 
 }

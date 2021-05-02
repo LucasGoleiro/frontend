@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import {tap} from 'rxjs/operators';
 import { UserDTO } from 'src/app/models/User';
 
 @Injectable({
@@ -21,6 +20,7 @@ export class UsersService {
 
   public createUser(user: UserDTO): Observable<UserDTO> {
     const url = `${this.urlAPI}/team-members`
+    console.log("service create" + user + " - " + url)
     return this.http.post<UserDTO>(url, user)
   };
 
