@@ -1,0 +1,37 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+
+  section.section-input {
+    width: 300px;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+
+#button-cancel {
+  background-color: red;
+  width: 100px;
+  color: white;
+}
+
+#button-save {
+  color: white;
+  background-color: green;
+  margin-right: 30px;
+  width: 100px;
+}
+
+div.div-buttons {
+  display: flex;
+  justify-content: center;
+  
+}
+
+mat-label {
+  font-size: 20px;
+  font-style: italic;
+}

@@ -13,8 +13,8 @@ export class UserformComponent implements OnInit {
   private _userDTO!: UserDTO;
 
   public positions: string[] = [
-    'Desenvolvedor FullStack',
-    'UX/UI',
+    'Desenvolvedor(a) FullStack',
+    'UX/UI Design',
     'Desenvolvedor(a) Backend',
     'Desenvolvedor(a) Frontend',
     'DBA',

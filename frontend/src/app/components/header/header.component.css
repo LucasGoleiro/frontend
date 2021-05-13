@@ -18,6 +18,12 @@
   margin-left: 450px;
 }
 
+button {
+  margin-left: 400px;
+  height: 30px;
+  align-self: center;
+}
+
 img {
   width: auto;
   height: 70px;

@@ -2,7 +2,7 @@ import { UserDTO } from './../../../../../models/User';
 import { UsersService } from './../../../../services/users.service';
 import { TasksService } from './../../../../services/task.service';
 import { TaskDTO } from './../../../../../models/Task';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 @Component({

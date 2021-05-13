@@ -1,0 +1,25 @@
+<div class="div-main">
+    <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="example-form">
+      <section class="section-input">
+        <mat-form-field class="example-full-width" appearance="outline" required>
+          <mat-label>Colaborador</mat-label>
+          <mat-select formControlName="teamMember">
+            <mat-option *ngFor="let developer of developers" [value]="developer">
+              {{developer.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="outline" required>
+          <mat-label>Descrição</mat-label>
+          <textarea matInput placeholder="Digite aqui" formControlName="description" id="description"  [(ngModel)]="_taskDTO.description">
+          </textarea>
+        </mat-form-field>
+      </section>
+  
+      <div class="div-buttons">
+        <button id="button-save" mat-button mat-dialog-close  type="submit">Salvar</button>
+        <button id="button-cancel" mat-button mat-dialog-close>Cancelar</button>
+      </div>
+    </form>
+  </div>

@@ -1,0 +1,15 @@
+<div class="div-main">
+    <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="example-form">
+      <section class="section-input">       
+        <mat-label>Descrição</mat-label>
+        <p>
+        {{ _taskDTO.description }}
+        </p>
+      </section>
+  
+      <div class="div-buttons">
+        <button id="button-save" mat-button mat-dialog-close  type="submit">Iniciar task</button>
+        <button id="button-cancel" mat-button mat-dialog-close>Sair</button>
+      </div>
+    </form>
+  </div>

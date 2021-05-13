@@ -7,6 +7,7 @@ import {MatSort} from '@angular/material/sort';
 
 import { UserDTO } from 'src/app/models/User';
 import { MatDialog } from '@angular/material/dialog';
+import { EditUserComponent } from '../../edit-user/edit-user.component';
 
 
 @Component({
@@ -17,7 +18,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class UsersTableComponent implements OnInit {
 
   public ELEMENT_DATA! : UserDTO[];
-  displayedColumns: string[] = ['name', 'email', 'position'];
+  displayedColumns: string[] = ['name', 'email', 'position', 'actions'];
   dataSource = new MatTableDataSource<UserDTO>(this.ELEMENT_DATA);
 
   @ViewChild('table') table: MatTable<any>;
@@ -25,8 +26,8 @@ export class UsersTableComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(
-    public dialog: MatDialog,
-    private usersService: UsersService,
+    public _dialog: MatDialog,
+    private _usersService: UsersService,
     ) { }
 
   ngOnInit(): void {
@@ -34,7 +35,7 @@ export class UsersTableComponent implements OnInit {
     this.dataSource.sort=this.sort;
     this.renderTable();
 
-    this.usersService.new_user$.subscribe(user => {
+    this._usersService.new_user$.subscribe(user => {
       if (user) {
         this.dataSource.data.push(user);
         this.renderTable();
@@ -44,7 +45,7 @@ export class UsersTableComponent implements OnInit {
   }
 
   renderTable() {
-    return this.usersService.listUsers().subscribe(res => this.dataSource.data = res);
+    return this._usersService.listUsers().subscribe(res => this.dataSource.data = res);
   };
 
   ngAfterViewInit() {
@@ -53,12 +54,23 @@ export class UsersTableComponent implements OnInit {
   }
 
   public listUsers(){
-    let resp = this.usersService.listUsers();
+    let resp = this._usersService.listUsers();
     resp.subscribe(report=>this.dataSource.data=report as UserDTO[])
   }
 
   openDialog() {
-    this.dialog.open(UserformComponent, { disableClose: true });
+    this._dialog.open(UserformComponent, { disableClose: true });
+  }
+
+  public edit(data) {
+    this._dialog.open(EditUserComponent, { disableClose: true, data: {
+      data
+    } });
+  }
+
+  public delete(data) {
+    console.log(data)
+    this._usersService.deleteUser(data);
   }
 
 }

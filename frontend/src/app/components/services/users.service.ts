@@ -14,14 +14,13 @@ export class UsersService {
 
   constructor(private http: HttpClient) { }
 
-  listUsers(): Observable<UserDTO[]> {
+  public listUsers(): Observable<UserDTO[]> {
     return this.http.get<UserDTO[]>(`${this.urlAPI}/team-members`);
   };
 
   public createUser(user: UserDTO): Observable<UserDTO> {
-    const url = `${this.urlAPI}/team-members`
-    console.log("service create" + user + " - " + url)
-    return this.http.post<UserDTO>(url, user)
+    const url = `${this.urlAPI}/team-members`;
+    return this.http.post<UserDTO>(url, user);
   };
 
   public emitUser(user: UserDTO): void {
@@ -30,8 +29,19 @@ export class UsersService {
 
   public updateUser(user: UserDTO): Observable<UserDTO> {
     const id = user.id;
-    const url = `${this.urlAPI}/team-members/${id}`
-    return this.http.put<UserDTO>(url, user)
+    const url = `${this.urlAPI}/team-members/${id}`;
+    return this.http.put<UserDTO>(url, user);
   };
+
+  public deleteUser(user: UserDTO) : void {
+    const id = user.id;
+    const url = `${this.urlAPI}/team-members/${id}`;
+    this.http.delete<UserDTO>(url);
+  };
+
+  public getUsers(): Observable<UserDTO[]> {
+    const url = `${this.urlAPI}/team-members`;
+    return this.http.get<UserDTO[]>(url);
+  }
 
 };

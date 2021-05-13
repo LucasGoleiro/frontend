@@ -7,6 +7,7 @@ import {MatSort} from '@angular/material/sort';
 import { TaskDTO } from 'src/app/models/Task';
 import { MatDialog } from '@angular/material/dialog';
 import { TasksService } from 'src/app/components/services/task.service';
+import { EditTaskComponent } from '../../edit-task/edit-task.component';
 
 @Component({
   selector: 'app-tasks-table',
@@ -16,7 +17,7 @@ import { TasksService } from 'src/app/components/services/task.service';
 export class TasksTableComponent implements OnInit {
 
   public ELEMENT_DATA! : TaskDTO[];
-  displayedColumns: string[] = ['developer', 'description', 'status'];
+  displayedColumns: string[] = ['developer', 'description', 'status', 'actions'];
   dataSource = new MatTableDataSource<TaskDTO>(this.ELEMENT_DATA);
 
 
@@ -25,7 +26,7 @@ export class TasksTableComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(
-    public dialog: MatDialog,
+    public _dialog: MatDialog,
     private _tasksService: TasksService
     ) { }
 
@@ -58,7 +59,17 @@ export class TasksTableComponent implements OnInit {
   }
 
   openDialog() {
-    this.dialog.open(TaskFormComponent, { disableClose: true });
+    this._dialog.open(TaskFormComponent, { disableClose: true });
+  }
+
+  public edit(data) {
+    this._dialog.open(EditTaskComponent, { disableClose: true, data: {
+      data
+    } });
+  }
+
+  public delete(data) {
+    this._tasksService.deleteTask(data)
   }
 
 }

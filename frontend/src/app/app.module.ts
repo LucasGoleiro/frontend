@@ -31,6 +31,11 @@ import { UserActiveComponent } from './components/user-home/user-active/user-act
 import { UserBacklogComponent } from './components/user-home/user-backlog/user-backlog.component';
 import { UserFinishedComponent } from './components/user-home/user-finished/user-finished.component';
 import { HttpClientModule } from '@angular/common/http';
+import { EditUserComponent } from './components/admin/users/edit-user/edit-user.component';
+import { EditTaskComponent } from './components/admin/tasks/edit-task/edit-task.component';
+import { UpdateBacklogComponent } from './components/user-home/user-backlog/update-backlog/update-backlog.component';
+import { UpdateActiveComponent } from './components/user-home/user-active/update-active/update-active.component';
+import { UpdateFinishedComponent } from './components/user-home/user-finished/update-finished/update-finished.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +51,12 @@ import { HttpClientModule } from '@angular/common/http';
     UserHomeComponent,
     UserActiveComponent,
     UserBacklogComponent,
-    UserFinishedComponent
+    UserFinishedComponent,
+    EditUserComponent,
+    EditTaskComponent,
+    UpdateBacklogComponent,
+    UpdateActiveComponent,
+    UpdateFinishedComponent
   ],
   imports: [
     BrowserModule,

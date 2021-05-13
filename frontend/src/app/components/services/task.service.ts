@@ -15,7 +15,7 @@ export class TasksService {
 
   constructor(private http: HttpClient) { }
 
-  listTasks(): Observable<TaskDTO[]> {
+  public listTasks(): Observable<TaskDTO[]> {
     return this.http.get<TaskDTO[]>(`${this.urlAPI}/tasks`);
   };
 
@@ -32,6 +32,12 @@ export class TasksService {
     const id = task.id;
     const url = `${this.urlAPI}/tasks/${id}`
     return this.http.put<TaskDTO>(url, task)
+  };
+
+  public deleteTask(task: TaskDTO) : void {
+    const id = task.id;
+    const url = `${this.urlAPI}/tasks/${id}`;
+    this.http.delete<TaskDTO>(url)
   };
 
 };
